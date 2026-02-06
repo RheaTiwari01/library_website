@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Welcome to Library</h2>
+<p>You are logged in.</p>
+
+<div style="margin-top: 20px;">
+    <h3>Quick Links</h3>
+    <nav id="navbar" style="display:none;">
+
+    <a href="/book/">Book</a> |
+
+    <!-- Admin Only -->
+    <a href="/author/" class="admin-only">Author</a> |
+    <a href="/publisher/" class="admin-only">Publisher</a> |
+
+    <a href="#" onclick="logout()">Logout</a>
+
+</nav>
+
+</div>
+<script>
+    // Check if user is admin and hide admin-only links if not
+    const isAdmin = localStorage.getItem("is_admin");
+    
+    if (isAdmin === "false" || isAdmin === false || !isAdmin) {
+        const adminLinks = document.querySelectorAll(".admin-only");
+        adminLinks.forEach(link => {
+            link.style.display = "none";
+        });
+    }
+</script>
+
+{% endblock %}

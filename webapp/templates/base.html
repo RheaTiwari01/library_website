@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Library</title>
+</head>
+<body>
+
+<meta name="csrf-token" content="{{ csrf_token }}">
+
+<!-- <nav id="navbar" style="display:none;">
+    <a href="/api/author/search/">Author</a> |
+    <a href="/api/publisher/search/">Publisher</a> |
+    <a href="/api/book/search/">Book</a> |
+    <a href="#" onclick="logout()">Logout</a>
+</nav> -->
+
+<hr>
+
+{% block content %}{% endblock %}
+
+<script>
+
+    const token = localStorage.getItem("access");
+    const path = window.location.pathname;   // ✅ FIX
+
+    // If NOT logged in → send to login
+    if (!token && path !== "/login/") {
+        window.location.href = "/login/";
+    }
+
+    // If logged in → don't stay on login
+    if (token && path === "/login/") {
+        window.location.href = "/home/";
+    }
+
+    // If logged in → show navbar
+    if (token) {
+        document.getElementById("navbar").style.display = "block";
+    }
+
+    function logout() {
+        localStorage.removeItem("access");
+        localStorage.removeItem("refresh");
+
+        window.location.href = "/login/";
+    }
+
+</script>
+
+
+</body>
+</html>

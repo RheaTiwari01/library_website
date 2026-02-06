@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+
+<h2>Add Book</h2>
+
+<input id="title" placeholder="Title">
+<input id="date" type="date">
+
+<br><br>
+
+<select id="publisher"></select>
+
+<br><br>
+
+<select id="authors" multiple></select>
+
+<br><br>
+
+<button onclick="addBook()">Save</button>
+
+<script src="{% static 'books.js' %}"></script>
+
+{% endblock %}

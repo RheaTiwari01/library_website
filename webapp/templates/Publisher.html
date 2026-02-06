@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h2> Add Publisher</h2>
+<input id="Name" placeholder="Name">
+<input id="country" placeholder="Country">
+<input id="website" placeholder="website">
+<button onclick="addPub()">Save</button>
+<br><br>
+<h3>Search</h3>
+<input id="search">
+<ul id="result"></ul>
+<script src="{% static 'pub.js' %}"></script>
+{% endblock %}

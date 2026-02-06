@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h2> Add Author</h2>
+<input id="fname" placeholder="First name">
+<input id="lname" placeholder="Last name">
+<input id="email" placeholder="email">
+<button onclick="addAuthor()">Save</button>
+<br><br>
+<h3>Search</h3>
+<input id="search">
+<ul id="result"></ul>
+<script src="{% static 'auhtor.js' %}"></script>
+{% endblock %}
